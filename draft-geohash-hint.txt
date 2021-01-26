@@ -4,8 +4,8 @@
 
 Network Working Group                                           T. Pauly
 Internet-Draft                                                Apple Inc.
-Intended status: Experimental                           10 December 2020
-Expires: 13 June 2021
+Intended status: Experimental                            26 January 2021
+Expires: 30 July 2021
 
 
                       The Geohash HTTP Client Hint
@@ -38,11 +38,11 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 13 June 2021.
+   This Internet-Draft will expire on 30 July 2021.
 
 Copyright Notice
 
-   Copyright (c) 2020 IETF Trust and the persons identified as the
+   Copyright (c) 2021 IETF Trust and the persons identified as the
    document authors.  All rights reserved.
 
    This document is subject to BCP 78 and the IETF Trust's Legal
@@ -59,12 +59,13 @@ Table of Contents
    1.  Introduction
      1.1.  Requirements
    2.  Geohash Header
-   3.  Security Considerations
-   4.  IANA Considerations
-     4.1.  HTTP Headers
-   5.  References
-     5.1.  Normative References
-     5.2.  Informative References
+   3.  Server Behavior
+   4.  Security Considerations
+   5.  IANA Considerations
+     5.1.  HTTP Headers
+   6.  References
+     6.1.  Normative References
+     6.2.  Informative References
    Author's Address
 
 1.  Introduction
@@ -122,7 +123,27 @@ Table of Contents
 
        Vary: Sec-CH-Geohash
 
-3.  Security Considerations
+3.  Server Behavior
+
+   Upon receiving a Geohash Client Hint, a server can use the
+   information to influence its behavior in various ways.
+
+   The server can use the Geohash to determine the content of HTTP
+   responses, as a replacement for inferring location from client IP
+   addresses.
+
+   If the server is acting as a forward proxy, such as a CONNECT proxy,
+   it can use the Geohash to determine an appropriate geo-mapped IP
+   address to use for outbound connections, or a client subnet to
+   present in the EDNS0 Client Subnet extension for DNS queries
+   [RFC6891] [RFC7871].
+
+   If a proxy receiving the Geohash hint cannot respect the location
+   indicated by the hint, it SHOULD include a Proxy-Status header
+   [I-D.ietf-httpbis-proxy-status] in its response, with the "details"
+   parameter containing the string "Geohash ignored".
+
+4.  Security Considerations
 
    The use of the Geohash Client Hint MUST use the Sec- header prefix as
    recommended in [I-D.ietf-httpbis-client-hints].
@@ -132,9 +153,9 @@ Table of Contents
    Geohash Client Hint, as well as a default length of Geohash.
    Shorter, truncated Geohashes provide less specific locality.
 
-4.  IANA Considerations
+5.  IANA Considerations
 
-4.1.  HTTP Headers
+5.1.  HTTP Headers
 
    This document registers the "Sec-CH-Geohash" header in the "Permanent
    Message Header Field Names" <https://www.iana.org/assignments/
@@ -146,9 +167,9 @@ Table of Contents
      | Sec-CH-Geohash       |   http   |  exp   | This document |
      +----------------------+----------+--------+---------------+
 
-5.  References
+6.  References
 
-5.1.  Normative References
+6.1.  Normative References
 
    [I-D.ietf-httpbis-client-hints]
               Grigorik, I. and Y. Weiss, "HTTP Client Hints", Work in
@@ -163,6 +184,13 @@ Table of Contents
               <http://www.ietf.org/internet-drafts/draft-ietf-httpbis-
               header-structure-19.txt>.
 
+   [I-D.ietf-httpbis-proxy-status]
+              Nottingham, M. and P. Sikora, "The Proxy-Status HTTP
+              Response Header Field", Work in Progress, Internet-Draft,
+              draft-ietf-httpbis-proxy-status-02, 11 August 2020,
+              <http://www.ietf.org/internet-drafts/draft-ietf-httpbis-
+              proxy-status-02.txt>.
+
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
               DOI 10.17487/RFC2119, March 1997,
@@ -172,9 +200,19 @@ Table of Contents
               2119 Key Words", BCP 14, RFC 8174, DOI 10.17487/RFC8174,
               May 2017, <https://www.rfc-editor.org/info/rfc8174>.
 
-5.2.  Informative References
+6.2.  Informative References
 
    [GEOHASH]  "Geohash", 2020, <https://en.wikipedia.org/wiki/Geohash>.
+
+   [RFC6891]  Damas, J., Graff, M., and P. Vixie, "Extension Mechanisms
+              for DNS (EDNS(0))", STD 75, RFC 6891,
+              DOI 10.17487/RFC6891, April 2013,
+              <https://www.rfc-editor.org/info/rfc6891>.
+
+   [RFC7871]  Contavalli, C., van der Gaast, W., Lawrence, D., and W.
+              Kumari, "Client Subnet in DNS Queries", RFC 7871,
+              DOI 10.17487/RFC7871, May 2016,
+              <https://www.rfc-editor.org/info/rfc7871>.
 
 Author's Address
 

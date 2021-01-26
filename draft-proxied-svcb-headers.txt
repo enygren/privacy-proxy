@@ -4,8 +4,8 @@
 
 Network Working Group                                           T. Pauly
 Internet-Draft                                               Apple, Inc.
-Intended status: Standards Track                        10 December 2020
-Expires: 13 June 2021
+Intended status: Standards Track                         26 January 2021
+Expires: 30 July 2021
 
 
               HTTP Header Fields for Proxied SVCB Metadata
@@ -38,11 +38,11 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 13 June 2021.
+   This Internet-Draft will expire on 30 July 2021.
 
 Copyright Notice
 
-   Copyright (c) 2020 IETF Trust and the persons identified as the
+   Copyright (c) 2021 IETF Trust and the persons identified as the
    document authors.  All rights reserved.
 
    This document is subject to BCP 78 and the IETF Trust's Legal
@@ -208,15 +208,15 @@ dns-svcb-params = "svc2.example.com.";priority=1;ttl=3600;p1=:aDIsaDM=:;p5=:MTIz
    [I-D.ietf-masque-connect-udp]
               Schinazi, D., "The CONNECT-UDP HTTP Method", Work in
               Progress, Internet-Draft, draft-ietf-masque-connect-udp-
-              00, 28 August 2020, <http://www.ietf.org/internet-drafts/
-              draft-ietf-masque-connect-udp-00.txt>.
+              03, 5 January 2021, <http://www.ietf.org/internet-drafts/
+              draft-ietf-masque-connect-udp-03.txt>.
 
    [I-D.ietf-tls-esni]
               Rescorla, E., Oku, K., Sullivan, N., and C. Wood, "TLS
               Encrypted Client Hello", Work in Progress, Internet-Draft,
-              draft-ietf-tls-esni-08, 16 October 2020,
+              draft-ietf-tls-esni-09, 16 December 2020,
               <http://www.ietf.org/internet-drafts/draft-ietf-tls-esni-
-              08.txt>.
+              09.txt>.
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
