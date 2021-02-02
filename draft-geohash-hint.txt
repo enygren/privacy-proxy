@@ -4,8 +4,8 @@
 
 Network Working Group                                           T. Pauly
 Internet-Draft                                                Apple Inc.
-Intended status: Experimental                            26 January 2021
-Expires: 30 July 2021
+Intended status: Experimental                            2 February 2021
+Expires: 6 August 2021
 
 
                       The Geohash HTTP Client Hint
@@ -38,7 +38,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 30 July 2021.
+   This Internet-Draft will expire on 6 August 2021.
 
 Copyright Notice
 
@@ -60,6 +60,7 @@ Table of Contents
      1.1.  Requirements
    2.  Geohash Header
    3.  Server Behavior
+     3.1.  Proxy Behavior
    4.  Security Considerations
    5.  IANA Considerations
      5.1.  HTTP Headers
@@ -88,6 +89,9 @@ Table of Contents
    server when looking up information that may vary depending on
    location.
 
+   This document also defines a how forward proxies can use proxy status
+   fields to inform clients about the result of their Geohash hints.
+
 1.1.  Requirements
 
    The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
@@ -98,10 +102,10 @@ Table of Contents
 
 2.  Geohash Header
 
-   The "Sec-CH-Geohash" and "Server-Connection-Id" are Item Structured
-   Headers [I-D.ietf-httpbis-header-structure].  Its value MUST be a
-   String, and MUST have at least 1 character and no more than 12
-   characters.  The ABNF is:
+   The "Sec-CH-Geohash" is an Item Structured Header
+   [I-D.ietf-httpbis-header-structure].  Its value MUST be a String, and
+   MUST have at least 1 character and no more than 12 characters.  The
+   ABNF is:
 
       Sec-CH-Geohash = sf-string
 
@@ -138,10 +142,14 @@ Table of Contents
    present in the EDNS0 Client Subnet extension for DNS queries
    [RFC6891] [RFC7871].
 
+3.1.  Proxy Behavior
+
    If a proxy receiving the Geohash hint cannot respect the location
    indicated by the hint, it SHOULD include a Proxy-Status header
    [I-D.ietf-httpbis-proxy-status] in its response, with the "details"
-   parameter containing the string "Geohash ignored".
+   parameter containing the string "invalid geohash".
+
+   Proxy-Status: ExampleProxy; details="invalid geohash"
 
 4.  Security Considerations
 
@@ -158,8 +166,8 @@ Table of Contents
 5.1.  HTTP Headers
 
    This document registers the "Sec-CH-Geohash" header in the "Permanent
-   Message Header Field Names" <https://www.iana.org/assignments/
-   message-headers>.
+   Message Header Field Names" registry
+   <https://www.iana.org/assignments/message-headers>.
 
      +----------------------+----------+--------+---------------+
      | Header Field Name    | Protocol | Status |   Reference   |

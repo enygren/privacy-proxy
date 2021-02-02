@@ -4,8 +4,8 @@
 
 Network Working Group                                           T. Pauly
 Internet-Draft                                                Apple Inc.
-Intended status: Experimental                            26 January 2021
-Expires: 30 July 2021
+Intended status: Experimental                            2 February 2021
+Expires: 6 August 2021
 
 
               The Privacy Token HTTP Authentication Scheme
@@ -38,7 +38,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 30 July 2021.
+   This Internet-Draft will expire on 6 August 2021.
 
 Copyright Notice
 
