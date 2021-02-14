@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2021-02-11T00:29:22.204592+00:00",
+  "timestamp": "2021-02-14T00:22:35.556024+00:00",
   "repo": "tfpauly/privacy-proxy",
   "labels": [
     {
@@ -49,6 +49,31 @@
       "color": "ffffff"
     }
   ],
-  "issues": [],
+  "issues": [
+    {
+      "number": 1,
+      "id": "MDU6SXNzdWU4MDY1NjM4MTQ=",
+      "title": "Allow privacy token to support either 2048 or 4096 RSA keys",
+      "url": "https://github.com/tfpauly/privacy-proxy/issues/1",
+      "state": "OPEN",
+      "author": "tfpauly",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "We should support different versions here.",
+      "createdAt": "2021-02-11T16:47:52Z",
+      "updatedAt": "2021-02-11T16:55:18Z",
+      "closedAt": null,
+      "comments": [
+        {
+          "author": "FredericJacobs",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Our recommendation for RSA is to keep 4096-bit keys. We can take a look at how to address performance concerns but I don't think reducing the security parameter size is the best option.",
+          "createdAt": "2021-02-11T16:55:18Z",
+          "updatedAt": "2021-02-11T16:55:18Z"
+        }
+      ]
+    }
+  ],
   "pulls": []
 }
