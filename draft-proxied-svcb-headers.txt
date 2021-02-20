@@ -4,8 +4,8 @@
 
 Network Working Group                                           T. Pauly
 Internet-Draft                                               Apple, Inc.
-Intended status: Standards Track                         2 February 2021
-Expires: 6 August 2021
+Intended status: Standards Track                        20 February 2021
+Expires: 24 August 2021
 
 
               HTTP Header Fields for Proxied SVCB Metadata
@@ -38,7 +38,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 6 August 2021.
+   This Internet-Draft will expire on 24 August 2021.
 
 Copyright Notice
 
@@ -105,8 +105,9 @@ Table of Contents
 2.  SVCB Request Header Field
 
    Clients can request SVCB parameters with the Structured Header
-   [STRUCT] "DNS-SVCB-Keys".  Its value MUST be an sf-list whose members
-   are sf-integer items that MUST NOT contain parameters.  Its ABNF is:
+   [RFC8941] "DNS-SVCB-Keys".  Its value MUST be an sf-list whose
+   members are sf-integer items that MUST NOT contain parameters.  Its
+   ABNF is:
 
    DNS-SVCB-Keys = sf-list
 
@@ -201,47 +202,46 @@ dns-svcb-params = "svc2.example.com.";priority=1;ttl=3600;p1=:aDIsaDM=:;p5=:MTIz
               Schwartz, B., Bishop, M., and E. Nygren, "Service binding
               and parameter specification via the DNS (DNS SVCB and
               HTTPS RRs)", Work in Progress, Internet-Draft, draft-ietf-
-              dnsop-svcb-https-02, 2 November 2020,
-              <http://www.ietf.org/internet-drafts/draft-ietf-dnsop-
-              svcb-https-02.txt>.
+              dnsop-svcb-https-03, 17 February 2021,
+              <https://datatracker.ietf.org/doc/html/draft-ietf-dnsop-
+              svcb-https-03.txt>.
 
    [I-D.ietf-masque-connect-udp]
               Schinazi, D., "The CONNECT-UDP HTTP Method", Work in
               Progress, Internet-Draft, draft-ietf-masque-connect-udp-
-              03, 5 January 2021, <http://www.ietf.org/internet-drafts/
-              draft-ietf-masque-connect-udp-03.txt>.
+              03, 5 January 2021,
+              <https://datatracker.ietf.org/doc/html/draft-ietf-masque-
+              connect-udp-03.txt>.
 
    [I-D.ietf-tls-esni]
-              Rescorla, E., Oku, K., Sullivan, N., and C. Wood, "TLS
+              Rescorla, E., Oku, K., Sullivan, N., and C. A. Wood, "TLS
               Encrypted Client Hello", Work in Progress, Internet-Draft,
               draft-ietf-tls-esni-09, 16 December 2020,
-              <http://www.ietf.org/internet-drafts/draft-ietf-tls-esni-
-              09.txt>.
+              <https://datatracker.ietf.org/doc/html/draft-ietf-tls-
+              esni-09.txt>.
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
               DOI 10.17487/RFC2119, March 1997,
-              <https://www.rfc-editor.org/info/rfc2119>.
+              <https://datatracker.ietf.org/doc/html/rfc2119>.
 
    [RFC7230]  Fielding, R., Ed. and J. Reschke, Ed., "Hypertext Transfer
               Protocol (HTTP/1.1): Message Syntax and Routing",
               RFC 7230, DOI 10.17487/RFC7230, June 2014,
-              <https://www.rfc-editor.org/info/rfc7230>.
+              <https://datatracker.ietf.org/doc/html/rfc7230>.
 
    [RFC7231]  Fielding, R., Ed. and J. Reschke, Ed., "Hypertext Transfer
               Protocol (HTTP/1.1): Semantics and Content", RFC 7231,
               DOI 10.17487/RFC7231, June 2014,
-              <https://www.rfc-editor.org/info/rfc7231>.
+              <https://datatracker.ietf.org/doc/html/rfc7231>.
 
    [RFC8174]  Leiba, B., "Ambiguity of Uppercase vs Lowercase in RFC
               2119 Key Words", BCP 14, RFC 8174, DOI 10.17487/RFC8174,
-              May 2017, <https://www.rfc-editor.org/info/rfc8174>.
+              May 2017, <https://datatracker.ietf.org/doc/html/rfc8174>.
 
-   [STRUCT]   Nottingham, M. and P. Kamp, "Structured Field Values for
-              HTTP", Work in Progress, Internet-Draft, draft-ietf-
-              httpbis-header-structure-19, 3 June 2020,
-              <http://www.ietf.org/internet-drafts/draft-ietf-httpbis-
-              header-structure-19.txt>.
+   [RFC8941]  Nottingham, M. and P-H. Kamp, "Structured Field Values for
+              HTTP", RFC 8941, DOI 10.17487/RFC8941, February 2021,
+              <https://datatracker.ietf.org/doc/html/rfc8941>.
 
 Author's Address
 

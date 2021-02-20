@@ -4,8 +4,8 @@
 
 Network Working Group                                           T. Pauly
 Internet-Draft                                                Apple Inc.
-Intended status: Experimental                            2 February 2021
-Expires: 6 August 2021
+Intended status: Experimental                           20 February 2021
+Expires: 24 August 2021
 
 
                       The Geohash HTTP Client Hint
@@ -38,7 +38,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 6 August 2021.
+   This Internet-Draft will expire on 24 August 2021.
 
 Copyright Notice
 
@@ -71,10 +71,10 @@ Table of Contents
 
 1.  Introduction
 
-   HTTP Client Hints [I-D.ietf-httpbis-client-hints] defines a
-   convention for HTTP headers to communicate optional information from
-   clients to servers as hints.  This can be done conditionally based on
-   if a server claims supports for a particular hint.
+   HTTP Client Hints [RFC8942] defines a convention for HTTP headers to
+   communicate optional information from clients to servers as hints.
+   This can be done conditionally based on if a server claims supports
+   for a particular hint.
 
    This document defines a client hint that can be used to send a
    location that the client wants to use for influencing server
@@ -102,10 +102,9 @@ Table of Contents
 
 2.  Geohash Header
 
-   The "Sec-CH-Geohash" is an Item Structured Header
-   [I-D.ietf-httpbis-header-structure].  Its value MUST be a String, and
-   MUST have at least 1 character and no more than 12 characters.  The
-   ABNF is:
+   The "Sec-CH-Geohash" is an Item Structured Header [RFC8941].  Its
+   value MUST be a String, and MUST have at least 1 character and no
+   more than 12 characters.  The ABNF is:
 
       Sec-CH-Geohash = sf-string
 
@@ -154,7 +153,7 @@ Table of Contents
 4.  Security Considerations
 
    The use of the Geohash Client Hint MUST use the Sec- header prefix as
-   recommended in [I-D.ietf-httpbis-client-hints].
+   recommended in [RFC8942].
 
    Client location can be used to fingerprint and tracker users, so
    clients MUST have a default policy around when to allow use of the
@@ -183,34 +182,29 @@ Table of Contents
 
 6.1.  Normative References
 
-   [I-D.ietf-httpbis-client-hints]
-              Grigorik, I. and Y. Weiss, "HTTP Client Hints", Work in
-              Progress, Internet-Draft, draft-ietf-httpbis-client-hints-
-              15, 3 July 2020, <http://www.ietf.org/internet-drafts/
-              draft-ietf-httpbis-client-hints-15.txt>.
-
-   [I-D.ietf-httpbis-header-structure]
-              Nottingham, M. and P. Kamp, "Structured Field Values for
-              HTTP", Work in Progress, Internet-Draft, draft-ietf-
-              httpbis-header-structure-19, 3 June 2020,
-              <http://www.ietf.org/internet-drafts/draft-ietf-httpbis-
-              header-structure-19.txt>.
-
    [I-D.ietf-httpbis-proxy-status]
               Nottingham, M. and P. Sikora, "The Proxy-Status HTTP
               Response Header Field", Work in Progress, Internet-Draft,
-              draft-ietf-httpbis-proxy-status-02, 11 August 2020,
-              <http://www.ietf.org/internet-drafts/draft-ietf-httpbis-
-              proxy-status-02.txt>.
+              draft-ietf-httpbis-proxy-status-04, 9 February 2021,
+              <https://datatracker.ietf.org/doc/html/draft-ietf-httpbis-
+              proxy-status-04.txt>.
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
               DOI 10.17487/RFC2119, March 1997,
-              <https://www.rfc-editor.org/info/rfc2119>.
+              <https://datatracker.ietf.org/doc/html/rfc2119>.
 
    [RFC8174]  Leiba, B., "Ambiguity of Uppercase vs Lowercase in RFC
               2119 Key Words", BCP 14, RFC 8174, DOI 10.17487/RFC8174,
-              May 2017, <https://www.rfc-editor.org/info/rfc8174>.
+              May 2017, <https://datatracker.ietf.org/doc/html/rfc8174>.
+
+   [RFC8941]  Nottingham, M. and P-H. Kamp, "Structured Field Values for
+              HTTP", RFC 8941, DOI 10.17487/RFC8941, February 2021,
+              <https://datatracker.ietf.org/doc/html/rfc8941>.
+
+   [RFC8942]  Grigorik, I. and Y. Weiss, "HTTP Client Hints", RFC 8942,
+              DOI 10.17487/RFC8942, February 2021,
+              <https://datatracker.ietf.org/doc/html/rfc8942>.
 
 6.2.  Informative References
 
@@ -219,12 +213,12 @@ Table of Contents
    [RFC6891]  Damas, J., Graff, M., and P. Vixie, "Extension Mechanisms
               for DNS (EDNS(0))", STD 75, RFC 6891,
               DOI 10.17487/RFC6891, April 2013,
-              <https://www.rfc-editor.org/info/rfc6891>.
+              <https://datatracker.ietf.org/doc/html/rfc6891>.
 
    [RFC7871]  Contavalli, C., van der Gaast, W., Lawrence, D., and W.
               Kumari, "Client Subnet in DNS Queries", RFC 7871,
               DOI 10.17487/RFC7871, May 2016,
-              <https://www.rfc-editor.org/info/rfc7871>.
+              <https://datatracker.ietf.org/doc/html/rfc7871>.
 
 Author's Address
 
