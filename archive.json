@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2021-02-18T00:22:22.647034+00:00",
+  "timestamp": "2021-02-21T00:23:06.173288+00:00",
   "repo": "tfpauly/privacy-proxy",
   "labels": [
     {
@@ -62,7 +62,7 @@
       "labels": [],
       "body": "We should support different versions here.",
       "createdAt": "2021-02-11T16:47:52Z",
-      "updatedAt": "2021-02-11T16:55:18Z",
+      "updatedAt": "2021-02-18T23:15:58Z",
       "closedAt": null,
       "comments": [
         {
@@ -71,9 +71,164 @@
           "body": "Our recommendation for RSA is to keep 4096-bit keys. We can take a look at how to address performance concerns but I don't think reducing the security parameter size is the best option.",
           "createdAt": "2021-02-11T16:55:18Z",
           "updatedAt": "2021-02-11T16:55:18Z"
+        },
+        {
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "body": "I support this relaxation. The actual long-term threat here only applies in very unrealistic or improbable scenarios. That said, having the version determine the key length is nice. ",
+          "createdAt": "2021-02-18T23:15:58Z",
+          "updatedAt": "2021-02-18T23:15:58Z"
+        }
+      ]
+    },
+    {
+      "number": 2,
+      "id": "MDU6SXNzdWU4MTEzNjI2NDI=",
+      "title": "Expand key_id to 8 bytes",
+      "url": "https://github.com/tfpauly/privacy-proxy/issues/2",
+      "state": "OPEN",
+      "author": "enygren",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "With key_id now being a hash of the public key, it would be preferable to switch the size of key_id to 8 bytes.  The chance of collisions with a  32-bit key_id with frequent rotations means that the key generation will need to track past keys to explicitly avoid collisions.  With a 64-bit key_id, accidental collisions is much more likely to be a non-issue.\r\n\r\n",
+      "createdAt": "2021-02-18T18:42:52Z",
+      "updatedAt": "2021-02-18T23:14:22Z",
+      "closedAt": null,
+      "comments": [
+        {
+          "author": "enygren",
+          "authorAssociation": "NONE",
+          "body": "(We should also define the encoding of the public key being hashed)",
+          "createdAt": "2021-02-18T18:54:05Z",
+          "updatedAt": "2021-02-18T18:54:05Z"
+        },
+        {
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "body": "> We should also define the encoding of the public key being hashed\r\n\r\nThe public key is a DER-encoded SubjectPublicKeyInfo, which is fairly standard. 8 bytes seems fine here.",
+          "createdAt": "2021-02-18T23:14:22Z",
+          "updatedAt": "2021-02-18T23:14:22Z"
         }
       ]
     }
   ],
-  "pulls": []
+  "pulls": [
+    {
+      "number": 3,
+      "id": "MDExOlB1bGxSZXF1ZXN0NTc2MDYxNDg5",
+      "title": "Expand KeyID, and clarify its format.",
+      "url": "https://github.com/tfpauly/privacy-proxy/pull/3",
+      "state": "OPEN",
+      "author": "chris-wood",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Closes #1 and #2.",
+      "createdAt": "2021-02-18T23:18:30Z",
+      "updatedAt": "2021-02-19T18:04:58Z",
+      "baseRepository": "tfpauly/privacy-proxy",
+      "baseRefName": "main",
+      "baseRefOid": "e7ebedbd3c7a18189a95cde50eee85ceb9ce690a",
+      "headRepository": "tfpauly/privacy-proxy",
+      "headRefName": "caw/keyids",
+      "headRefOid": "15930f98f1426c3e21470a37cc5f4ef7a5f29657",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [
+        {
+          "author": "FredericJacobs",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Random thought, if we require a hash function H for the blinding scheme, do we want to use that same hash function for the KeyID (eg. SHA384). ",
+          "createdAt": "2021-02-19T15:32:04Z",
+          "updatedAt": "2021-02-19T15:32:04Z"
+        },
+        {
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "body": "> Random thought, if we require a hash function H for the blinding scheme, do we want to use that same hash function for the KeyID (eg. SHA384).\r\n\r\nWe could, yeah. But we might just consider changing things entirely so that the server specifies the KeyID and there is no client computation at all. (This is the direction we're going for ECH.) This is just a hint for servers anyway, and they know whether or not they will have collisions. ",
+          "createdAt": "2021-02-19T15:42:01Z",
+          "updatedAt": "2021-02-19T15:42:01Z"
+        },
+        {
+          "author": "plisiecki1",
+          "authorAssociation": "NONE",
+          "body": "8 or 16 bytes of hash should adequately reduce the odds of collisions to the extent that it should never happen. Letting the server pick the KeyID would also resolve the collision issue. There may be some (minor) convenience factor for servers to look up keys by a chosen KeyID (e.g., a counter) rather than a derived one (hash).\r\n\r\nRather than making Nk depend on the version, could the signature field for v1 be defined as the rest of the token?  Then no new version is needed for RSA2048 vs RSA4096 vs RSA8192, etc. As long as the client and proxy support the number of key bits, the signature can be encoded efficiently into a version 1 token.",
+          "createdAt": "2021-02-19T18:01:18Z",
+          "updatedAt": "2021-02-19T18:02:20Z"
+        },
+        {
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "body": "> Rather than making Nk depend on the version, could the signature field for v1 be defined as the rest of the token? Then no new version is needed for RSA2048 vs RSA4096 vs RSA8192, etc. As long as the client and proxy support the number of key bits, the signature can be encoded efficiently into a version 1 token.\r\n\r\nPerhaps -- I'd need to think about this some more.",
+          "createdAt": "2021-02-19T18:04:58Z",
+          "updatedAt": "2021-02-19T18:04:58Z"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NTk0MDM1MTI2",
+          "commit": {
+            "abbreviatedOid": "15930f9"
+          },
+          "author": "FredericJacobs",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2021-02-19T10:02:01Z",
+          "updatedAt": "2021-02-19T10:03:40Z",
+          "comments": [
+            {
+              "originalPosition": 29,
+              "body": "I thought we had agreed to 4 bytes?",
+              "createdAt": "2021-02-19T10:02:01Z",
+              "updatedAt": "2021-02-19T10:03:40Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NTk0MzAwMjgw",
+          "commit": {
+            "abbreviatedOid": "15930f9"
+          },
+          "author": "FredericJacobs",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2021-02-19T15:31:11Z",
+          "updatedAt": "2021-02-19T15:31:11Z",
+          "comments": [
+            {
+              "originalPosition": 29,
+              "body": "Ooooh, I see. Now the request on the other issue.\r\n\r\n8 bytes is still feasible to find a collision.\r\n\r\nIs there any opposition to just not truncate the hash or make it 16 bytes?",
+              "createdAt": "2021-02-19T15:31:11Z",
+              "updatedAt": "2021-02-19T15:57:14Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NTk0MzExMjY4",
+          "commit": {
+            "abbreviatedOid": "15930f9"
+          },
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2021-02-19T15:42:37Z",
+          "updatedAt": "2021-02-19T15:42:37Z",
+          "comments": [
+            {
+              "originalPosition": 29,
+              "body": "None from me, but see my comment below where I propose the removing the need for clients to compute this at all. \r\n\r\n",
+              "createdAt": "2021-02-19T15:42:37Z",
+              "updatedAt": "2021-02-19T15:42:37Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
 }
