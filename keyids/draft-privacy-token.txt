@@ -5,8 +5,8 @@
 Network Working Group                                           T. Pauly
 Internet-Draft                                                Apple Inc.
 Intended status: Experimental                                  C.A. Wood
-Expires: 22 August 2021                                       Cloudflare
-                                                        18 February 2021
+Expires: 27 August 2021                                       Cloudflare
+                                                        23 February 2021
 
 
               The Privacy Token HTTP Authentication Scheme
@@ -39,7 +39,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 22 August 2021.
+   This Internet-Draft will expire on 27 August 2021.
 
 Copyright Notice
 
@@ -94,7 +94,7 @@ Table of Contents
 
    struct {
        uint8_t version;
-       uint8_t key_id[8];
+       uint8_t key_id[32];
        uint8_t message[32];
        uint8_t signature[Nk];
    } Token;
@@ -103,9 +103,9 @@ Table of Contents
 
    *  "version" is a 1-octet integer.  This document defines version 1.
 
-   *  "key_id" is a 8-octet truncated key ID that identifies the key
+   *  "key_id" is a collision-resistant hash that identifies the key
       used to produce the signature.  This is generated as
-      SHA256(public_key)[0:32], where public_key is a DER-encoded
+      SHA256(public_key), where public_key is a DER-encoded
       SubjectPublicKeyInfo object carrying the public key.
 
    *  "message" is a 32-octet random message that is signed by the
