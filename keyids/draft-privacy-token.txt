@@ -3,9 +3,10 @@
 
 
 Network Working Group                                           T. Pauly
-Internet-Draft                                                Apple Inc.
-Intended status: Experimental                                  C.A. Wood
-Expires: 27 August 2021                                       Cloudflare
+Internet-Draft                                                 F. Jacobs
+Intended status: Experimental                                 Apple Inc.
+Expires: 27 August 2021                                        C.A. Wood
+                                                              Cloudflare
                                                         23 February 2021
 
 
@@ -179,6 +180,15 @@ Authors' Addresses
    United States of America
 
    Email: tpauly@apple.com
+
+
+   Frederic Jacobs
+   Apple Inc.
+   One Apple Park Way
+   Cupertino, California 95014,
+   United States of America
+
+   Email: frederic.jacobs@apple.com
 
 
    Christopher A. Wood
