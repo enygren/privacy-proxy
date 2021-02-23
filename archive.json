@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2021-02-21T00:23:06.173288+00:00",
+  "timestamp": "2021-02-23T00:22:16.363215+00:00",
   "repo": "tfpauly/privacy-proxy",
   "labels": [
     {
@@ -111,6 +111,22 @@
           "updatedAt": "2021-02-18T23:14:22Z"
         }
       ]
+    },
+    {
+      "number": 4,
+      "id": "MDU6SXNzdWU4MTM4MDM2MTc=",
+      "title": "Strongly reference RSA blind in the Privacy Token Structure section",
+      "url": "https://github.com/tfpauly/privacy-proxy/issues/4",
+      "state": "OPEN",
+      "author": "tfpauly",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "Add comment in section 2 highlighting that the message must be encoded as described in [RSASIG] for the creation of this signature; otherwise without the appropriate encoding this scheme is not robust",
+      "createdAt": "2021-02-22T19:39:55Z",
+      "updatedAt": "2021-02-22T19:39:55Z",
+      "closedAt": null,
+      "comments": []
     }
   ],
   "pulls": [
