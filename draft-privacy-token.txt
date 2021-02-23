@@ -3,9 +3,11 @@
 
 
 Network Working Group                                           T. Pauly
-Internet-Draft                                                Apple Inc.
-Intended status: Experimental                           20 February 2021
-Expires: 24 August 2021
+Internet-Draft                                                 F. Jacobs
+Intended status: Experimental                                 Apple Inc.
+Expires: 27 August 2021                                        C.A. Wood
+                                                              Cloudflare
+                                                        23 February 2021
 
 
               The Privacy Token HTTP Authentication Scheme
@@ -38,7 +40,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 24 August 2021.
+   This Internet-Draft will expire on 27 August 2021.
 
 Copyright Notice
 
@@ -63,7 +65,7 @@ Table of Contents
    4.  Security Considerations
    5.  IANA Considerations
    6.  Normative References
-   Author's Address
+   Authors' Addresses
 
 1.  Introduction
 
@@ -93,24 +95,25 @@ Table of Contents
 
    struct {
        uint8_t version;
-       uint8_t key_id[4];
+       uint8_t key_id[32];
        uint8_t message[32];
-       uint8_t signature[512];
+       uint8_t signature[Nk];
    } Token;
 
    The structure fields are defined as follows:
 
    *  "version" is a 1-octet integer.  This document defines version 1.
 
-   *  "key_id" is a 4-octet truncated key ID that identifies the key
-      used to produce the signature.  This is generated as SHA256(public
-      key)[0:32].
+   *  "key_id" is a collision-resistant hash that identifies the key
+      used to produce the signature.  This is generated as
+      SHA256(public_key), where public_key is a DER-encoded
+      SubjectPublicKeyInfo object carrying the public key.
 
    *  "message" is a 32-octet random message that is signed by the
       signature.
 
-   *  "signature" is a 512-octet RSA Blind Signature that covers the
-      message.
+   *  "signature" is a Nk-octet RSA Blind Signature that covers the
+      message.  For version 1, Nk is 512.
 
 3.  PrivacyToken Authentication Scheme
 
@@ -168,7 +171,7 @@ Table of Contents
               wood.github.io/draft-wood-cfrg-blind-signatures/draft-
               wood-cfrg-rsa-blind-signatures.html>.
 
-Author's Address
+Authors' Addresses
 
    Tommy Pauly
    Apple Inc.
@@ -177,3 +180,18 @@ Author's Address
    United States of America
 
    Email: tpauly@apple.com
+
+
+   Frederic Jacobs
+   Apple Inc.
+   One Apple Park Way
+   Cupertino, California 95014,
+   United States of America
+
+   Email: frederic.jacobs@apple.com
+
+
+   Christopher A. Wood
+   Cloudflare
+
+   Email: caw@heapingbits.net
