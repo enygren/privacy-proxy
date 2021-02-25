@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2021-02-23T00:22:16.363215+00:00",
+  "timestamp": "2021-02-25T00:22:15.402905+00:00",
   "repo": "tfpauly/privacy-proxy",
   "labels": [
     {
@@ -55,15 +55,15 @@
       "id": "MDU6SXNzdWU4MDY1NjM4MTQ=",
       "title": "Allow privacy token to support either 2048 or 4096 RSA keys",
       "url": "https://github.com/tfpauly/privacy-proxy/issues/1",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "tfpauly",
       "authorAssociation": "OWNER",
       "assignees": [],
       "labels": [],
       "body": "We should support different versions here.",
       "createdAt": "2021-02-11T16:47:52Z",
-      "updatedAt": "2021-02-18T23:15:58Z",
-      "closedAt": null,
+      "updatedAt": "2021-02-23T20:33:12Z",
+      "closedAt": "2021-02-23T19:20:50Z",
       "comments": [
         {
           "author": "FredericJacobs",
@@ -78,6 +78,20 @@
           "body": "I support this relaxation. The actual long-term threat here only applies in very unrealistic or improbable scenarios. That said, having the version determine the key length is nice. ",
           "createdAt": "2021-02-18T23:15:58Z",
           "updatedAt": "2021-02-18T23:15:58Z"
+        },
+        {
+          "author": "enygren",
+          "authorAssociation": "NONE",
+          "body": "Is it worth then defining both a v1 (4096-bit key) and a v2 (same but 2048-bit key) within this draft, with some security considerations talking about the trade-offs?  (Or swapping the ordering of v1/v2?)",
+          "createdAt": "2021-02-23T20:29:18Z",
+          "updatedAt": "2021-02-23T20:29:18Z"
+        },
+        {
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "body": "> Is it worth then defining both a v1 (4096-bit key) and a v2 (same but 2048-bit key) within this draft, with some security considerations talking about the trade-offs? (Or swapping the ordering of v1/v2?)\r\n\r\nIt probably wouldn't hurt, yeah. Clients that are willing to accept 2048-bit keys could choose to do so. ",
+          "createdAt": "2021-02-23T20:33:12Z",
+          "updatedAt": "2021-02-23T20:33:12Z"
         }
       ]
     },
@@ -135,24 +149,26 @@
       "id": "MDExOlB1bGxSZXF1ZXN0NTc2MDYxNDg5",
       "title": "Expand KeyID, and clarify its format.",
       "url": "https://github.com/tfpauly/privacy-proxy/pull/3",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "chris-wood",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "Closes #1 and #2.",
       "createdAt": "2021-02-18T23:18:30Z",
-      "updatedAt": "2021-02-19T18:04:58Z",
+      "updatedAt": "2021-02-23T19:20:50Z",
       "baseRepository": "tfpauly/privacy-proxy",
       "baseRefName": "main",
       "baseRefOid": "e7ebedbd3c7a18189a95cde50eee85ceb9ce690a",
       "headRepository": "tfpauly/privacy-proxy",
       "headRefName": "caw/keyids",
-      "headRefOid": "15930f98f1426c3e21470a37cc5f4ef7a5f29657",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "headRefOid": "c92380c26f5a2e2426282a7e427d9a78d9daa335",
+      "closedAt": "2021-02-23T19:20:50Z",
+      "mergedAt": "2021-02-23T19:20:50Z",
+      "mergedBy": "tfpauly",
+      "mergeCommit": {
+        "oid": "0347212c78394d0e2f4bae48675f4e9cb899d862"
+      },
       "comments": [
         {
           "author": "FredericJacobs",
@@ -181,68 +197,35 @@
           "body": "> Rather than making Nk depend on the version, could the signature field for v1 be defined as the rest of the token? Then no new version is needed for RSA2048 vs RSA4096 vs RSA8192, etc. As long as the client and proxy support the number of key bits, the signature can be encoded efficiently into a version 1 token.\r\n\r\nPerhaps -- I'd need to think about this some more.",
           "createdAt": "2021-02-19T18:04:58Z",
           "updatedAt": "2021-02-19T18:04:58Z"
+        },
+        {
+          "author": "FredericJacobs",
+          "authorAssociation": "COLLABORATOR",
+          "body": "@chris-wood : Do we just take a SHA-256 hash and not truncate it?",
+          "createdAt": "2021-02-23T18:53:53Z",
+          "updatedAt": "2021-02-23T18:53:53Z"
+        },
+        {
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "body": "> @chris-wood : Do we just take a SHA-256 hash and not truncate it?\r\n\r\nWhat's the rationale? This is just a hint. If security of the thing using this hint depends on lack of collision, that seems like a bigger problem. ",
+          "createdAt": "2021-02-23T18:55:32Z",
+          "updatedAt": "2021-02-23T18:55:32Z"
         }
       ],
       "reviews": [
         {
-          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NTk0MDM1MTI2",
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NTk2NzExMTk2",
           "commit": {
-            "abbreviatedOid": "15930f9"
+            "abbreviatedOid": "c92380c"
           },
-          "author": "FredericJacobs",
-          "authorAssociation": "COLLABORATOR",
-          "state": "COMMENTED",
+          "author": "tfpauly",
+          "authorAssociation": "OWNER",
+          "state": "APPROVED",
           "body": "",
-          "createdAt": "2021-02-19T10:02:01Z",
-          "updatedAt": "2021-02-19T10:03:40Z",
-          "comments": [
-            {
-              "originalPosition": 29,
-              "body": "I thought we had agreed to 4 bytes?",
-              "createdAt": "2021-02-19T10:02:01Z",
-              "updatedAt": "2021-02-19T10:03:40Z"
-            }
-          ]
-        },
-        {
-          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NTk0MzAwMjgw",
-          "commit": {
-            "abbreviatedOid": "15930f9"
-          },
-          "author": "FredericJacobs",
-          "authorAssociation": "COLLABORATOR",
-          "state": "COMMENTED",
-          "body": "",
-          "createdAt": "2021-02-19T15:31:11Z",
-          "updatedAt": "2021-02-19T15:31:11Z",
-          "comments": [
-            {
-              "originalPosition": 29,
-              "body": "Ooooh, I see. Now the request on the other issue.\r\n\r\n8 bytes is still feasible to find a collision.\r\n\r\nIs there any opposition to just not truncate the hash or make it 16 bytes?",
-              "createdAt": "2021-02-19T15:31:11Z",
-              "updatedAt": "2021-02-19T15:57:14Z"
-            }
-          ]
-        },
-        {
-          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NTk0MzExMjY4",
-          "commit": {
-            "abbreviatedOid": "15930f9"
-          },
-          "author": "chris-wood",
-          "authorAssociation": "COLLABORATOR",
-          "state": "COMMENTED",
-          "body": "",
-          "createdAt": "2021-02-19T15:42:37Z",
-          "updatedAt": "2021-02-19T15:42:37Z",
-          "comments": [
-            {
-              "originalPosition": 29,
-              "body": "None from me, but see my comment below where I propose the removing the need for clients to compute this at all. \r\n\r\n",
-              "createdAt": "2021-02-19T15:42:37Z",
-              "updatedAt": "2021-02-19T15:42:37Z"
-            }
-          ]
+          "createdAt": "2021-02-23T19:20:39Z",
+          "updatedAt": "2021-02-23T19:20:39Z",
+          "comments": []
         }
       ]
     }
