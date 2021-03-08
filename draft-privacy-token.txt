@@ -5,9 +5,9 @@
 Network Working Group                                           T. Pauly
 Internet-Draft                                                 F. Jacobs
 Intended status: Experimental                                 Apple Inc.
-Expires: 27 August 2021                                        C.A. Wood
+Expires: 9 September 2021                                      C.A. Wood
                                                               Cloudflare
-                                                        23 February 2021
+                                                            8 March 2021
 
 
               The Privacy Token HTTP Authentication Scheme
@@ -40,7 +40,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 27 August 2021.
+   This Internet-Draft will expire on 9 September 2021.
 
 Copyright Notice
 
@@ -90,8 +90,8 @@ Table of Contents
 
    A privacy token is a structure that begins with a single byte that
    indicates a version.  This document defines version, 1, which
-   indicates use of private tokens based on RSA Blind Signatures, and
-   determines the rest of the structure contents.
+   indicates use of private tokens based on RSA Blind Signatures
+   [RSASIG], and determines the rest of the structure contents.
 
    struct {
        uint8_t version;
@@ -167,9 +167,9 @@ Table of Contents
               2119 Key Words", BCP 14, RFC 8174, DOI 10.17487/RFC8174,
               May 2017, <https://datatracker.ietf.org/doc/html/rfc8174>.
 
-   [RSASIG]   "RSA Blind Signatures", 2020, <https://chris-
-              wood.github.io/draft-wood-cfrg-blind-signatures/draft-
-              wood-cfrg-rsa-blind-signatures.html>.
+   [RSASIG]   "RSA Blind Signatures", March 2020,
+              <https://tools.ietf.org/html/draft-wood-cfrg-rsa-blind-
+              signatures-00>.
 
 Authors' Addresses
 

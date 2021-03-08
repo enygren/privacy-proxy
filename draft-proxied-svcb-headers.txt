@@ -4,8 +4,8 @@
 
 Network Working Group                                           T. Pauly
 Internet-Draft                                               Apple, Inc.
-Intended status: Standards Track                        23 February 2021
-Expires: 27 August 2021
+Intended status: Standards Track                            8 March 2021
+Expires: 9 September 2021
 
 
               HTTP Header Fields for Proxied SVCB Metadata
@@ -38,7 +38,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 27 August 2021.
+   This Internet-Draft will expire on 9 September 2021.
 
 Copyright Notice
 
@@ -160,17 +160,17 @@ Table of Contents
    As an example, assume that the server received the following
    "svc.example.com" SVCB records:
 
-   svc.example.com. 3600 IN HTTPS 1 svc2.example.com. alpn=h2,h3 echconfig="123..."
-   svc.example.com. 3600 IN HTTPS 2 . alpn=h2 echconfig="abc..."
+      svc.example.com. 3600 IN HTTPS 1 svc2.example.com. alpn=h2,h3 echconfig="123..."
+      svc.example.com. 3600 IN HTTPS 2 . alpn=h2 echconfig="abc..."
 
    A successful CONNECT response would include the following headers, if
    the client requested both "alpn" and "echconfig":
 
-HEADERS
-:method = CONNECT
-:status = 200
-dns-svcb-params = "svc2.example.com.";priority=1;ttl=3600;p1=:aDIsaDM=:;p5=:MTIzLi4u:,
-                  "svc.example.com.";priority=2;ttl=3600;p1=:aDI=:;p5=:YWJjLi4u:
+   HEADERS
+   :method = CONNECT
+   :status = 200
+   dns-svcb-params = "svc2.example.com.";priority=1;ttl=3600;p1=:aDIsaDM=:;p5=:MTIzLi4u:,
+                     "svc.example.com.";priority=2;ttl=3600;p1=:aDI=:;p5=:YWJjLi4u:
 
 4.  IANA Considerations
 
