@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2021-02-25T00:22:15.402905+00:00",
+  "timestamp": "2021-03-09T00:23:00.927973+00:00",
   "repo": "tfpauly/privacy-proxy",
   "labels": [
     {
@@ -225,6 +225,48 @@
           "body": "",
           "createdAt": "2021-02-23T19:20:39Z",
           "updatedAt": "2021-02-23T19:20:39Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 5,
+      "id": "MDExOlB1bGxSZXF1ZXN0NTg2NzU2Mjgx",
+      "title": "Fix the RSA Blind Signature reference.",
+      "url": "https://github.com/tfpauly/privacy-proxy/pull/5",
+      "state": "MERGED",
+      "author": "chris-wood",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "The usual reference format ({{I-D.foo.bar}}) doesn't work probably because the draft is still new. But this at least points folks to the right place.",
+      "createdAt": "2021-03-08T13:05:18Z",
+      "updatedAt": "2021-03-08T14:03:26Z",
+      "baseRepository": "tfpauly/privacy-proxy",
+      "baseRefName": "main",
+      "baseRefOid": "0347212c78394d0e2f4bae48675f4e9cb899d862",
+      "headRepository": "tfpauly/privacy-proxy",
+      "headRefName": "caw/fix-ref",
+      "headRefOid": "6e45e5729058c577ce820e474c2d1d0028d49779",
+      "closedAt": "2021-03-08T14:03:26Z",
+      "mergedAt": "2021-03-08T14:03:26Z",
+      "mergedBy": "tfpauly",
+      "mergeCommit": {
+        "oid": "455877dc692a66c6644bb8905b9e0a70756b9562"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NjA2MzEzNzMy",
+          "commit": {
+            "abbreviatedOid": "6e45e57"
+          },
+          "author": "tfpauly",
+          "authorAssociation": "OWNER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2021-03-08T14:03:22Z",
+          "updatedAt": "2021-03-08T14:03:22Z",
           "comments": []
         }
       ]
